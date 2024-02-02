@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Asn1Application<asn1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "asn1.asn1.Asn1Application",
+            "projectName": "asn1",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

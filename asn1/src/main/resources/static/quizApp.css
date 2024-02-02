@@ -1,0 +1,81 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 100px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+     /* Center vertically and horizontally */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    transition: background-image 0.5s ease-in-out; /* Optional: Smooth transition for background change */
+}
+
+.quiz-header h2 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li label {
+    cursor: pointer;
+}
+
+li label input {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.hidden {
+    display: none;
+}
+
+.correct-answer {
+    background-color: #90EE90; /* Light green for correct answers */
+}
+  
+.incorrect-answer {
+    background-color: #FFB6C1; /* Light red for incorrect answers */
+}
+  
+/* Ensure the results are centered and styled similarly to the quiz container */
+#results {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+}
