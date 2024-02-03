@@ -20,11 +20,7 @@ body, html {
     margin: 0 auto;
     padding: 100px;
     background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-     /* Center vertically and horizontally */
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the background image */
-    transition: background-image 0.5s ease-in-out; /* Optional: Smooth transition for background change */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .quiz-header h2 {
@@ -69,7 +65,6 @@ button:hover {
     background-color: #FFB6C1; /* Light red for incorrect answers */
 }
   
-/* Ensure the results are centered and styled similarly to the quiz container */
 #results {
     width: 80%;
     max-width: 500px;
@@ -77,5 +72,12 @@ button:hover {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: none; /* Initially hidden */
+    display: none;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: grey;
+    margin: 20px 0;
 }

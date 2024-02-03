@@ -1,7 +1,7 @@
 const quizQuestions = [
   {
     question: '(1/6) Which country is known for the birthplace of "Dim Sum"?',
-    choices: ["China", "South Korea", "Taiwan", "Thailand"],
+    choices: ["China", "Korea", "Taiwan", "Thailand"],
     correctAnswer: "China"
   },
   {
@@ -10,12 +10,12 @@ const quizQuestions = [
     correctAnswer: "Greece"
   },
   {
-    question: '(3/6) What country is famous for "Kimchi," a spicy fermented cabbage dish?',
-    choices: ["Japan", "China", "South Korea", "India"],
-    correctAnswer: "South Korea"
+    question: '(3/6) What country is famous for "Kimchi"?',
+    choices: ["Japan", "China", "Korea", "India"],
+    correctAnswer: "Korea"
   },
   {
-    question: '(4/6) "Tiramisu" is a dessert hailing from which country?',
+    question: '(4/6) "Tiramisu" is a dessert from which country?',
     choices: ["Italy", "France", "Spain", "Austria"],
     correctAnswer: "Italy"
   },
@@ -66,9 +66,6 @@ function showQuestion(questionIndex) {
     });
   });
 
-  // Set the background image for the current question
-  quizContainer.style.backgroundImage = question.backgroundImage;
-
   // Update navigation buttons (previous, next, submit)
   updateNavigation();
 }
@@ -88,26 +85,34 @@ function updateNavigation() {
 
 function showResults() {
   if (userAnswers.includes(null)) {
-      alert('Please select an answer for all the questions');
-      return;
+    alert('Please select an answer for all the questions');
+    return;
   }
 
   const score = userAnswers.reduce((total, answer, index) => {
-      return total + (answer === quizQuestions[index].correctAnswer ? 1 : 0);
+    return total + (answer === quizQuestions[index].correctAnswer ? 1 : 0);
   }, 0);
 
   const resultsDiv = document.getElementById('results');
   resultsDiv.innerHTML = quizQuestions.map((question, index) => {
-      const userAnswer = userAnswers[index];
-      const isCorrect = userAnswer === question.correctAnswer;
-      const answerClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
-      return `
-          <div class="${answerClass}">
-              <p>Question: ${question.question}</p>
-              <p>Your answer: ${userAnswer || "No answer selected"}</p>
-              <p>Correct answer: ${question.correctAnswer}</p>
-          </div>
-      `;
+    const userAnswer = userAnswers[index];
+    const isCorrect = userAnswer === question.correctAnswer;
+    
+    // Generate choices list with highlighting
+    const choicesHtml = question.choices.map(choice => {
+      const choiceClass = choice === question.correctAnswer 
+        ? 'correct-answer' 
+        : (choice === userAnswer ? 'incorrect-answer' : '');
+      return `<li class="${choiceClass}">${choice}</li>`;
+    }).join('');
+
+    return `
+      <div>
+        <p><strong>Question: ${question.question}</strong></p>
+        <ul>${choicesHtml}</ul>
+        <hr> <!-- Horizontal line -->
+      </div>
+    `;
   }).join('') + `<h2>Your Score: ${score}/${quizQuestions.length}</h2>`;
 
   const retryButton = document.createElement('button');
@@ -116,6 +121,7 @@ function showResults() {
   resultsDiv.appendChild(retryButton);
 
   document.getElementById('quiz').style.display = 'none';
+  resultsDiv.classList.remove('hidden'); // instead of setting style.display to 'block', we remove 'hidden' class
   resultsDiv.style.display = 'block';
 }
 
